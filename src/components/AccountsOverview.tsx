@@ -74,8 +74,42 @@ export const AccountsOverview: React.FC<AccountsOverviewProps> = ({
     setEditingAccountId(null);
   };
 
+  const isFreshStart = transactions.length === 0 && totalBalance === 0;
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div className="space-y-4">
+      {isFreshStart && (
+        <div className="p-4 bg-gradient-to-r from-blue-950/40 via-slate-900 to-emerald-950/40 border border-emerald-500/30 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+          <div>
+            <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+              👋 Bienvenue sur votre espace vierge (From Scratch)
+            </span>
+            <p className="text-xs text-slate-300 mt-0.5">
+              Indiquez l'argent actuellement disponible sur votre <strong>Compte Courant</strong> et votre <strong>Livret A</strong> à l'aide des boutons <em>« Solde initial »</em> ci-dessous.
+            </p>
+          </div>
+          <div className="flex gap-2">
+            {checkingAccount && (
+              <button
+                onClick={() => startEditing(checkingAccount)}
+                className="px-3 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 rounded-lg text-xs font-medium transition whitespace-nowrap"
+              >
+                Régler Compte Courant
+              </button>
+            )}
+            {livretAAccount && (
+              <button
+                onClick={() => startEditing(livretAAccount)}
+                className="px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-medium transition whitespace-nowrap"
+              >
+                Régler Livret A
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       
       {/* 1. Carte Patrimoine Total */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/80 p-6 shadow-xl">
@@ -263,7 +297,7 @@ export const AccountsOverview: React.FC<AccountsOverviewProps> = ({
           </button>
         </div>
       </div>
-
     </div>
+  </div>
   );
 };

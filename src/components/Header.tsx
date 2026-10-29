@@ -135,12 +135,12 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 onClick={() => {
-                  if (confirm('Voulez-vous réinitialiser les données avec l\'exemple de démonstration ?')) {
+                  if (confirm('Voulez-vous réinitialiser toutes les données à zéro (repartir from scratch) ?')) {
                     onResetData();
                   }
                 }}
-                className="p-2 text-slate-400 hover:text-amber-400 hover:bg-slate-800 rounded-lg transition-colors"
-                title="Recharger les données de démonstration"
+                className="p-2 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition-colors"
+                title="Réinitialiser toutes les données à zéro (from scratch)"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>

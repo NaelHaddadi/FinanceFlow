@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { AppData, Transaction, RecurringTransaction, ForecastConfig, TransactionType } from './types/finance';
-import { loadAppData, saveAppData, DEFAULT_DATA } from './utils/storage';
+import { loadAppData, saveAppData, EMPTY_DATA } from './utils/storage';
 import { calculateAccountBalances } from './utils/calculations';
 import { Header } from './components/Header';
 import { AccountsOverview } from './components/AccountsOverview';
@@ -129,10 +129,10 @@ export const App: React.FC = () => {
     }));
   };
 
-  // Réinitialiser les données
+  // Réinitialiser les données (vider tout à zéro)
   const handleResetData = () => {
-    setAppData(DEFAULT_DATA);
-    saveAppData(DEFAULT_DATA);
+    setAppData(EMPTY_DATA);
+    saveAppData(EMPTY_DATA);
   };
 
   // Importer un fichier de données
